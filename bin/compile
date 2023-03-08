@@ -17,8 +17,8 @@ fi
 GITHUB_AUTH_TOKEN="$(cat "${ENV_DIR}/GITHUB_AUTH_TOKEN")"
 
 # Set the credentials in `.netrc` for build time only (they are intentionally not put in the slug).
-echo "machine github.com login ${GITHUB_AUTH_TOKEN} password x-oauth-basic" >> "${HOME}/.netrc"
-echo "machine api.github.com login ${GITHUB_AUTH_TOKEN} password x-oauth-basic" >> "${HOME}/.netrc"
+echo "machine github.com login oauth2 password ${GITHUB_AUTH_TOKEN}" >> "${HOME}/.netrc"
+echo "machine api.github.com login oauth2 password ${GITHUB_AUTH_TOKEN}" >> "${HOME}/.netrc"
 
 # Configure `curl` to use `.netrc` (again at build time only).
 echo '--netrc-optional' >> "${HOME}/.curlrc"
